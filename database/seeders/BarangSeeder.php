@@ -116,5 +116,6 @@ class BarangSeeder extends Seeder
             ],
         ];
         DB::table('m_barangs')->insert($data);
+        DB::select('select * from m_users');
     }
 }
