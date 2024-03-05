@@ -17,8 +17,14 @@
 
             {{-- <th>ID</th>
             <th>Username</th>
-            <th>Nama</th> --}}
-            <th>Jumlah Pengguna</th>
+            <th>Nama</th>
+            <th>Jumlah Pengguna</th> --}}
+
+            <th>ID</th>
+            <th>Username</th>
+            <th>Nama</th>
+            <th>ID Level Pengguna</th>
+
         </tr>
         <tr>
             {{-- <td>{{ $data->user_id }}</td>
@@ -28,8 +34,13 @@
 
             {{-- <td>{{ $data->user_id }}</td>
             <td>{{ $data->username }}</td>
-            <td>{{ $data->nama }}</td> --}}
-            <td>{{ $data}}</td>
+            <td>{{ $data->nama }}</td>
+            <td>{{ $data}}</td> --}}
+
+            <td>{{ $data->user_id }}</td>
+            <td>{{ $data->username }}</td>
+            <td>{{ $data->nama }}</td>
+            <td>{{ $data->level_id }}</td>
         </tr>
     </table>
 </body>
