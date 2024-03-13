@@ -74,8 +74,8 @@ class UserController extends Controller
         // });
         // return view('user', ['data' => $user]);
 
-        //     $user = UserModel::findOrFail(1);
-        //     return view('user', ['data' => $user]);
+            // $user = UserModel::findOrFail(1);
+            // return view('user', ['data' => $user]);
 
         //     $user = UserModel::where('username', 'manager9')->firstOrFail();
         //     return view('user', ['data' => $user]);
@@ -143,11 +143,11 @@ class UserController extends Controller
         // $user->isClean('nama');//true
         // $user->isClean(['nama', 'username']);//false
 
-        // $user->save();
+        //     $user->save();
 
-        // $user->isDirty();//false
-        // $user->isClean();//true
-        // dd($user->isDirty());
+        //     $user->isDirty();//false
+        //     $user->isClean();//true
+        //     dd($user->isDirty());
 
         // $user = UserModel::create(
         //     [
