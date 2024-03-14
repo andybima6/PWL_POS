@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\kategoriModel;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\DataTables\KategoriDataTable;
+use Illuminate\Database\Eloquent\Model;
 
 class KategoriController extends Controller
 {
@@ -28,8 +30,26 @@ class KategoriController extends Controller
 
 
     // Praktikum 2 jobsheet 5
+    // public function index(KategoriDataTable $dataTable)
+    // {
+    //     return $dataTable->render('kategori.index');
+    // }
+
+    // Praktikum 3 jobsheet 5
     public function index(KategoriDataTable $dataTable)
     {
         return $dataTable->render('kategori.index');
+    }
+    public function create()
+    {
+        return view('kategori.create');
+    }
+    public function store(Request $request)
+    {
+        kategoriModel::create([
+            'kategori_kode' => $request->kodeKategori,
+            'kategori_nama' => $request->namaKategori,
+        ]);
+        return redirect('/kategori');
     }
 }
