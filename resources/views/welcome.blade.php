@@ -134,7 +134,7 @@
 
 
 {{-- Praktikum 1 no 4 --}}
-@extends('layout.app')
+@extends('layouts.app')
 {{-- Customize laout sections --}}
 
 @section('subtitle', 'welcome')

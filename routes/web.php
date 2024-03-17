@@ -36,3 +36,4 @@ Route::get('/kategori', [KategoriController::class, 'index']);
 // Praktikum 3 js 5
 Route::get('/kategori/create', [KategoriController::class, 'create']);
 Route::post('/kategori', [KategoriController::class, 'store']);
+
