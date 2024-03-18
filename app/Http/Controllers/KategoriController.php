@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class KategoriController extends Controller
 {
+
     // public function index()
     // {
     // $data = [
@@ -38,13 +39,16 @@ class KategoriController extends Controller
     // Praktikum 3 jobsheet 5
     public function index(KategoriDataTable $dataTable)
     {
+
         return $dataTable->render('kategori.index');
+
+
     }
     public function create()
     {
         return view('kategori.create');
     }
-    public function store(Request $request)
+    public function create_simpan(Request $request)
     {
         kategoriModel::create([
             'kategori_kode' => $request->kodeKategori,
@@ -52,4 +56,21 @@ class KategoriController extends Controller
         ]);
         return redirect('/kategori');
     }
+    public function edit($id)
+    {
+        $kategori = kategoriModel::find($id);
+        return view('kategori.edit', ['data' => $kategori]);
+    }
+    public function edit_simpan(Request $request, $id)
+    {
+        $kategori = kategoriModel::find($id);
+
+        $kategori->kategori_kode = $request->kodeKategori;
+        $kategori->kategori_nama = $request->namaKategori;
+
+        $kategori->save();
+
+        return redirect('/kategori')->with('success', 'Data kategori berhasil diubah');
+    }
+
 }
