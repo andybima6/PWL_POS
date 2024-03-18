@@ -72,5 +72,12 @@ class KategoriController extends Controller
 
         return redirect('/kategori')->with('success', 'Data kategori berhasil diubah');
     }
+    public function hapus($id)
+    {
+        $kategori = kategoriModel::find($id);
+        $kategori->delete();
+
+        return redirect('/kategori');
+    }
 
 }
