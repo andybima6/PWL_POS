@@ -42,6 +42,7 @@ Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('/k
 Route::put('/kategori/edit_simpan/{id}', [KategoriController::class, 'edit_simpan'])->name('/kategori/edit_simpan');
 
 // Tugas 4
+<<<<<<< HEAD
 Route::get('/kategori/hapus/{id}', [kategoriController::class, 'hapus'])->name('/kategori/hapus');
 
 
@@ -59,3 +60,6 @@ Route::put('/level/edit_simpan/{id}', [LevelController::class, 'edit_simpan'])->
 Route::get('/level/hapus/{id}', [LevelController::class, 'hapus'])->name('/level/hapus');
 
 Route::get('/user', [UserController::class, 'index']);
+=======
+Route::get('/kategori/hapus/{id}', [KategoriController::class, 'hapus'])->name('/kategori/hapus');
+>>>>>>> 9828130c870d3fe43b1dad5fe58ced9f8aeb4d79
