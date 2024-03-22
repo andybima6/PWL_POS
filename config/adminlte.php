@@ -310,9 +310,22 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+
         [
             'text' => 'Kategori',
             'url' => '/kategori',
+            'icon' => 'far fa-fw fa-file',
+            'label_color' => 'success',
+        ],
+        [
+            'text' => 'User',
+            'url' => '/user',
+            'icon' => 'far fa-fw fa-file',
+            'label_color' => 'success',
+        ],
+        [
+            'text' => 'Level',
+            'url' => '/level',
             'icon' => 'far fa-fw fa-file',
             'label_color' => 'success',
         ],

@@ -27,7 +27,7 @@ Route::get('/', function () {
 // Route::get('/user/tambah', [UserController::class, 'tambah'])->name('/user/tambah');
 // Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan'])->name('/user/tambah_simpan');
 // Route::get('/user/', [UserController::class, 'ubah'])->name('/user/ubah');
-// Route::put('/user/ubah_si', [UserController::class, 'ubah_simpan'])->name('/user/ubah_simpan');
+// Route::put('/user/ubah_simpan{id}', [UserController::class, 'ubah_simpan'])->name('/user/ubah_simpan');
 // Route::get('/user/hapus/{id}', [UserController::class, 'hapus'])->name('/user/hapus');
 
 // Praktikum 2 js 5
@@ -42,4 +42,20 @@ Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('/k
 Route::put('/kategori/edit_simpan/{id}', [KategoriController::class, 'edit_simpan'])->name('/kategori/edit_simpan');
 
 // Tugas 4
-Route::get('/kategori/hapus/{id}', [KategoriController::class, 'hapus'])->name('/kategori/hapus');
+Route::get('/kategori/hapus/{id}', [kategoriController::class, 'hapus'])->name('/kategori/hapus');
+
+
+// LEVEL
+Route::get('/level', [LevelController::class, 'index']);
+
+
+Route::get('/level/create', [LevelController::class, 'create'])->name('/level/create');;
+Route::post('/level/create_simpan', [LevelController::class, 'create_simpan'])->name('/level/create_simpan');;
+
+Route::get('/level/edit/{id}', [LevelController::class, 'edit'])->name('/level/edit');
+Route::put('/level/edit_simpan/{id}', [LevelController::class, 'edit_simpan'])->name('/level/edit_simpan');
+
+
+Route::get('/level/hapus/{id}', [LevelController::class, 'hapus'])->name('/level/hapus');
+
+Route::get('/user', [UserController::class, 'index']);
