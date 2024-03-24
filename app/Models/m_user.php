@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class m_user extends Model
 {
-    use HasFactory;
+    protected $table = "m_users";
+    public $timestamps = false;
+    protected $primaryKey = 'user_id';
+    protected $fillable = [
+        'user_id',
+        'level_id',
+        'username',
+        'nama',
+        'password',
+    ];
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
+use JeroenNoten\LaravelAdminLte\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,7 @@ Route::get('/kategori/hapus/{id}', [KategoriController::class, 'hapus'])->name('
 // Praktikum C Jobsheet 6
 Route::get('/user', [UserController::class, 'index'])->name('/user');
 Route::post('/user/create_simpan', [UserController::class, 'create_simpan'])->name('/user/create_simpan');
+
+
+// Praktikum D Jobsheet 6
+Route::resource('m_users', POSController::class);

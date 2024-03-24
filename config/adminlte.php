@@ -319,7 +319,7 @@ return [
         ],
         [
             'text' => 'User',
-            'url' => '/user',
+            'url' => '/m_users',
             'icon' => 'far fa-fw fa-file',
             'label_color' => 'success',
         ],

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--
 @section('subtitle', 'User')
 @section('content_header_title', 'User')
 @section('content_header_subtitle', 'User')
@@ -56,4 +56,4 @@
             </div>
         </form>
     </div>
-@endsection
+@endsection --}}
