@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
@@ -34,15 +35,15 @@ Route::get('/', function () {
 Route::get('/kategori', [KategoriController::class, 'index']);
 
 // Praktikum 3 js 5
-Route::get('/kategori/create', [KategoriController::class, 'create'])->name('/kategori/create');;
-Route::post('/kategori/create_simpan', [KategoriController::class, 'create_simpan'])->name('/kategori/create_simpan');;
+Route::get('/kategori/create', [KategoriController::class, 'create'])->name('/kategori/create');
+Route::post('/kategori/create_simpan', [KategoriController::class, 'create_simpan'])->name('/kategori/create_simpan');
 
 // Tugas 3
 Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('/kategori/edit');
 Route::put('/kategori/edit_simpan/{id}', [KategoriController::class, 'edit_simpan'])->name('/kategori/edit_simpan');
 
 // Tugas 4
-<<<<<<< HEAD
+
 Route::get('/kategori/hapus/{id}', [kategoriController::class, 'hapus'])->name('/kategori/hapus');
 
 
@@ -60,6 +61,10 @@ Route::put('/level/edit_simpan/{id}', [LevelController::class, 'edit_simpan'])->
 Route::get('/level/hapus/{id}', [LevelController::class, 'hapus'])->name('/level/hapus');
 
 Route::get('/user', [UserController::class, 'index']);
-=======
+
 Route::get('/kategori/hapus/{id}', [KategoriController::class, 'hapus'])->name('/kategori/hapus');
->>>>>>> 9828130c870d3fe43b1dad5fe58ced9f8aeb4d79
+
+
+// Praktikum C Jobsheet 6
+Route::get('/user', [UserController::class, 'index'])->name('/user');
+Route::post('/user/create_simpan', [UserController::class, 'create_simpan'])->name('/user/create_simpan');

@@ -14,16 +14,24 @@
             </div>
 
 
-            <form method = "POST" action="{{ route('/level/create_simpan') }}">
+            <form method = "POST" action="/level/create_simpan">
                 {{ csrf_field() }}
                 <div class = "card-body">
                     <div class = "form-group">
                         <label for="kodeLevel">Kode Level</label>
-                        <input type="text" class = "form-control" id = "kodeLevel" name = "kodeLevel" placehold>
+                        <input type="text" class="form-control @error('level_code') is-invalid @enderror" name="kodelevel"
+                        placeholder="kodelevel">
+                    @error('level_code')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </div>
                     <div class = "form-group">
                         <label for="namaLevel">Nama Level</label>
-                        <input type="text" class = "form-control" id = "namaLevel" name = "namaLevel" placehold>
+                        <input type="text" class="form-control @error('level_code_nama') is-invalid @enderror" name="namaLevel"
+                        placeholder="namaLevel">
+                    @error('level_code_nama')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </div>
                 </div>
 

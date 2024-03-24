@@ -7,7 +7,9 @@ use App\Models\kategoriModel;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\DataTables\KategoriDataTable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Requests\CreateSimpanPostRequest;
 
 class KategoriController extends Controller
 {
@@ -41,21 +43,39 @@ class KategoriController extends Controller
     {
 
         return $dataTable->render('kategori.index');
-
-
     }
     public function create()
     {
         return view('kategori.create');
     }
-    public function create_simpan(Request $request)
+    // public function create_simpan(Request $request): RedirectResponse
+    // {
+    //     //     kategoriModel::create([
+    //     //         'kategori_kode' => $request->kodeKategori,
+    //     //         'kategori_nama' => $request->namaKategori,
+    //     //     ]);
+    //     //     return redirect('/kategori');
+    //     // }
+    //     $validated = $request->validate([
+    //         'kategori_kode' => ['bail', 'required', 'max:3'],
+    //         'kategori_nama' => ['required', 'min:12']
+    //     ]);
+
+    //     return redirect('/kategori')->with('success', 'Data kategori berhasil diubah');
+    // }
+
+
+    public function create_simpan(CreateSimpanPostRequest $request): RedirectResponse
     {
-        kategoriModel::create([
-            'kategori_kode' => $request->kodeKategori,
-            'kategori_nama' => $request->namaKategori,
-        ]);
+        $validated = $request->validated();
+
+        $validated = $request->safe()->only(['kategori_kode', 'kategori_nama']);
+        $validated = $request->safe()->except(['kategori_kode', 'kategori_nama']);
+
         return redirect('/kategori');
     }
+
+
     public function edit($id)
     {
         $kategori = kategoriModel::find($id);
@@ -72,6 +92,7 @@ class KategoriController extends Controller
 
         return redirect('/kategori')->with('success', 'Data kategori berhasil diubah');
     }
+
     public function hapus($id)
     {
         $kategori = kategoriModel::find($id);
@@ -79,5 +100,4 @@ class KategoriController extends Controller
 
         return redirect('/kategori');
     }
-
 }

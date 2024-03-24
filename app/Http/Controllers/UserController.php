@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\DataTables\userDataTable;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\CreateSimpanPostRequest;
 
 class UserController extends Controller
 {
@@ -14,6 +16,28 @@ class UserController extends Controller
     {
         return $dataTable->render('user.index');
     }
+
+    // public function create_simpan(Request $request): RedirectResponse
+    // {
+    //     $validated = $request->validate([
+    //         'username' => ['bail', 'required', 'max:3'],
+    //         'nama' => ['bail', 'required', 'min:12'],
+    //         'password' => ['bail', 'required', 'min:12'],
+    //         'level_id' => ['bail', 'required', 'min:12']
+    //     ]);
+
+    //     return redirect('/user')->with('success', 'Data kategori berhasil diubah');
+    // }
+    public function create_simpan(CreateSimpanPostRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $validated = $request->safe()->only(['username', 'nama','password','level_id']);
+        $validated = $request->safe()->except(['username', 'nama','password','level_id']);
+
+        return redirect('/user');
+    }
+
     // 1)
     // $user = UserModel::all();
     // return view('user',['data' => $user]);
