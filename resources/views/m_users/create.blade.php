@@ -1,5 +1,9 @@
-@extends('m_users/template')
-@extends('layouts.app')
+
+@extends('m_users.template')
+@section('subtitle', 'user')
+@section('content_header_title', 'user')
+@section('content_header_subtitle', 'Create')
+
 @section('content')
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">

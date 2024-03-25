@@ -1,5 +1,8 @@
-@extends('m_users/template')
-@extends('layouts.app')
+
+@extends('m_users.template')
+@section('subtitle', 'user')
+@section('content_header_title', 'user')
+@section('content_header_subtitle', 'edit')
 @section('content')
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
@@ -7,7 +10,7 @@
                 <h2>Edit User</h2>
             </div>
             <div class="float-right">
-                <a class="btn btn-secondary" href="{{ route('m_users.index') }}">
+                <a class="btn btn-success" href="{{ route('m_users.index') }}">
                     Kembali</a>
             </div>
         </div>
