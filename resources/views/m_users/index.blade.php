@@ -12,7 +12,6 @@
                     <div class="col-lg-12 margin-tb">
                         <div class="float-left">
                         </div>
-
                             <a class="btn btn-success" href='{{ route('m_users.create') }}'> Input User</a>
 
                     </div>
