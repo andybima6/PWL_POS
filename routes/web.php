@@ -5,6 +5,7 @@ use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\WelcomeController;
 use JeroenNoten\LaravelAdminLte\Http\Controllers\Controller;
 
 /*
@@ -73,3 +74,6 @@ Route::post('/user/create_simpan', [UserController::class, 'create_simpan'])->na
 
 // Praktikum D Jobsheet 6
 Route::resource('m_users', POSController::class);
+
+// Praktikum 2 Jobsheet 7
+Route::get('/',[WelcomeController::class,'index']);
