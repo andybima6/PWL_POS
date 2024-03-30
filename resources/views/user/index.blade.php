@@ -1,59 +1,80 @@
-@extends('layouts.app')
-{{--
-@section('subtitle', 'User')
-@section('content_header_title', 'User')
-@section('content_header_subtitle', 'User')
-
+@extends('layouts.template')
 @section('content')
-    <div class="card card-info">
+    <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title">Input User</h3>
-        </div>
-        <form method="POST" action="/user/create_simpan">
-            @csrf
-            <div class="card-body">
-                <div class = "form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
-                    </div>
-                    <input type="text" class="form-control @error('username') is-invalid @enderror" name="username"
-                        placeholder="username">
-                    @error('username')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class = "form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                    </div>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
-                        placeholder="password">
-                    @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class = "form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                    </div>
-                    <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
-                        placeholder="nama">
-                    @error('nama')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class = "form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-address-card"></i></span>
-                    </div>
-                    <input type="text" class="form-control @error('level_id') is-invalid @enderror" name="level_id"
-                        placeholder="level_id">
-                    @error('level_id')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <h3 class="card-title">Manage User</h3>
+            <div class="card-tools">
+                <a class="btn btn-sm btn-primary mt-1" href="{{ url('/user/create') }}">Tambah</a>
             </div>
-        </form>
+        </div>
+        <div class="card-body">
+            @if (session('success'))
+           <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+            @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+             @endif
+            <table class="table table-bordered table-striped table-hover table-sm" id="table_user">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Nama</th>
+                        <th>Level
+                            Pengguna</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
-@endsection --}}
+@endsection
+@push('css')
+@endpush
+@push('js')
+    <script>
+        $(document).ready(function() {
+            var dataUser = $('#table_user').DataTable({
+                serverSide: true, // serverSide: true, jika ingin menggunakan server side processing
+                ajax: {
+                    "url": "{{ url('user/list') }}",
+                    "dataType": "json",
+                    "type": "POST"
+                },
+                columns: [{
+                        data: "DT_RowIndex",
+                        className: "text-center",
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: "username",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "nama",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "level.level_code_nama",
+                        className: "",
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: "aksi",
+                        className: "",
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
+
+            });
+
+        });
+    </script>
+@endpush

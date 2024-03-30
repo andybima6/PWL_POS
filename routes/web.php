@@ -62,14 +62,14 @@ Route::put('/level/edit_simpan/{id}', [LevelController::class, 'edit_simpan'])->
 
 Route::get('/level/hapus/{id}', [LevelController::class, 'hapus'])->name('/level/hapus');
 
-Route::get('/user', [UserController::class, 'index']);
+// Route::get('/user', [UserController::class, 'index']);
 
 Route::get('/kategori/hapus/{id}', [KategoriController::class, 'hapus'])->name('/kategori/hapus');
 
 
 // Praktikum C Jobsheet 6
-Route::get('/user', [UserController::class, 'index'])->name('/user');
-Route::post('/user/create_simpan', [UserController::class, 'create_simpan'])->name('/user/create_simpan');
+// Route::get('/user', [UserController::class, 'index'])->name('/user');
+// Route::post('/user/create_simpan', [UserController::class, 'create_simpan'])->name('/user/create_simpan');
 
 
 // Praktikum D Jobsheet 6
@@ -77,3 +77,16 @@ Route::resource('m_users', POSController::class);
 
 // Praktikum 2 Jobsheet 7
 Route::get('/',[WelcomeController::class,'index']);
+
+// Praktikum 3 Jobsheet 7
+
+Route::group(['prefix' => 'user'], function () {
+    route::get('/', [UserController::class, 'index']);
+    route::post('/list', [UserController::class, 'list']);
+    route::get('/create', [UserController::class, 'create']);
+    route::post('/', [UserController::class, 'create_simpan']);
+    route::get('/{id}', [UserController::class, 'show']);
+    route::get('/{id}/edit', [UserController::class, 'edit']);
+    route::put('/{id}', [UserController::class, 'update']);
+    route::delete('/{id}', [UserController::class, 'delete']);
+});
