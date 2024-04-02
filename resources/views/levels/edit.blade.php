@@ -16,26 +16,13 @@
                 <form method="POST" action="{{ url('/levels/' . $level->level_id) }}" class="form-horizontal">
                     @csrf
                     {!! method_field('PUT') !!} <!-- tambahkan baris ini untuk proses edit
-        yang butuh method PUT -->
+                        yang butuh method PUT -->
+
+
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Level</label>
+                        <label class="col-1 control-label col-form-label">level code</label>
                         <div class="col-11">
-                            <select class="form-control" id="level_id" name="level_id" required>
-                                <option value="">- Pilih Level -</option>
-                                @foreach ($level as $item)
-                                    <option value="{{ $item->level_id }}" @if ($item->level_id == $level->level_id) selected @endif>
-                                        {{ $item->level_nama }}</option>
-                                @endforeach
-                            </select>
-                            @error('level_id')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">level Code</label>
-                        <div class="col-11">
-                            <input type="text" class="form-control" id="levelcode" name="levelcode"
+                            <input type="text" class="form-control" id="level_code" name="level_code"
                                 value="{{ old('level_code', $level->level_code) }}" required>
                             @error('level_code')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -43,9 +30,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">level Nama</label>
+                        <label class="col-1 control-label col-form-label">level name</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="levelcodenama" name="levelcodenama"
+                            <input type="text" class="form-control" id="level_code_nama" name="level_code_nama"
                                 value="{{ old('level_code_nama', $level->level_code_nama) }}" required>
                             @error('level_code_nama')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -53,7 +40,6 @@
                         </div>
                     </div>
 
-                    </div>
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label"></label>
                         <div class="col-11">

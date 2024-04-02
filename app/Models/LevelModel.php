@@ -13,10 +13,10 @@ class LevelModel extends Model
 
     protected $primaryKey = 'level_id';
 
-    protected $fillable = ['level_code', 'level_code_nama'];
+    protected $fillable = ['user_id', 'level_id', 'level_code', 'level_code_nama'];
 
     public function user(): HasMany
     {
-        return $this->hasMany(UserModel::class, 'user_id', 'user_id');
+        return $this->hasMany(UserModel::class, 'level_id', 'level_id');
     }
 }

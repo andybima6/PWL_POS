@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\transaksiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
-use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\stockController;
+use App\Http\Controllers\barangController;
+use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\kategorisController;
 use JeroenNoten\LaravelAdminLte\Http\Controllers\Controller;
 
 /*
@@ -49,18 +54,18 @@ Route::put('/kategori/edit_simpan/{id}', [KategoriController::class, 'edit_simpa
 Route::get('/kategori/hapus/{id}', [kategoriController::class, 'hapus'])->name('/kategori/hapus');
 
 
-// LEVEL
-Route::get('/level', [LevelController::class, 'index']);
+// // LEVEL
+// Route::get('/level', [LevelController::class, 'index']);
 
 
-Route::get('/level/create', [LevelController::class, 'create'])->name('/level/create');;
-Route::post('/level/create_simpan', [LevelController::class, 'create_simpan'])->name('/level/create_simpan');;
+// Route::get('/level/create', [LevelController::class, 'create'])->name('/level/create');;
+// Route::post('/level/create_simpan', [LevelController::class, 'create_simpan'])->name('/level/create_simpan');;
 
-Route::get('/level/edit/{id}', [LevelController::class, 'edit'])->name('/level/edit');
-Route::put('/level/edit_simpan/{id}', [LevelController::class, 'edit_simpan'])->name('/level/edit_simpan');
+// Route::get('/level/edit/{id}', [LevelController::class, 'edit'])->name('/level/edit');
+// Route::put('/level/edit_simpan/{id}', [LevelController::class, 'edit_simpan'])->name('/level/edit_simpan');
 
 
-Route::get('/level/hapus/{id}', [LevelController::class, 'hapus'])->name('/level/hapus');
+// Route::get('/level/hapus/{id}', [LevelController::class, 'hapus'])->name('/level/hapus');
 
 // Route::get('/user', [UserController::class, 'index']);
 
@@ -89,4 +94,61 @@ Route::group(['prefix' => 'user'], function () {
     route::get('/{id}/edit', [UserController::class, 'edit']);
     route::put('/{id}', [UserController::class, 'update']);
     route::delete('/{id}', [UserController::class, 'delete']);
+});
+
+
+Route::group(['prefix' => 'levels'], function () {
+    route::get('/', [LevelsController::class, 'index']);
+    route::post('/list', [LevelsController::class, 'list']);
+    route::get('/create', [LevelsController::class, 'create']);
+    route::post('/', [LevelsController::class, 'create_simpan']);
+    route::get('/{id}', [LevelsController::class, 'show']);
+    route::get('/{id}/edit', [LevelsController::class, 'edit']);
+    route::put('/{id}', [LevelsController::class, 'update']);
+    route::delete('/{id}', [LevelsController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'kategoris'], function () {
+    route::get('/', [kategorisController::class, 'index']);
+    route::post('/list', [kategorisController::class, 'list']);
+    route::get('/create', [kategorisController::class, 'create']);
+    route::post('/', [kategorisController::class, 'create_simpan']);
+    route::get('/{id}', [kategorisController::class, 'show']);
+    route::get('/{id}/edit', [kategorisController::class, 'edit']);
+    route::put('/{id}', [kategorisController::class, 'update']);
+    route::delete('/{id}', [kategorisController::class, 'delete']);
+});
+
+
+Route::group(['prefix' => 'barang'], function () {
+    route::get('/', [barangController::class, 'index']);
+    route::post('/list', [barangController::class, 'list']);
+    route::get('/create', [barangController::class, 'create']);
+    route::post('/', [barangController::class, 'create_simpan']);
+    route::get('/{id}', [barangController::class, 'show']);
+    route::get('/{id}/edit', [barangController::class, 'edit']);
+    route::put('/{id}', [barangController::class, 'update']);
+    route::delete('/{id}', [barangController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'stock'], function () {
+    route::get('/', [stockController::class, 'index']);
+    route::post('/list', [stockController::class, 'list']);
+    route::get('/create', [stockController::class, 'create']);
+    route::post('/', [stockController::class, 'create_simpan']);
+    route::get('/{id}', [stockController::class, 'show']);
+    route::get('/{id}/edit', [stockController::class, 'edit']);
+    route::put('/{id}', [stockController::class, 'update']);
+    route::delete('/{id}', [stockController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'transaksi'], function () {
+    route::get('/', [transaksiController::class, 'index']);
+    route::post('/list', [transaksiController::class, 'list']);
+    route::get('/create', [transaksiController::class, 'create']);
+    route::post('/', [transaksiController::class, 'create_simpan']);
+    route::get('/{id}', [transaksiController::class, 'show']);
+    route::get('/{id}/edit', [transaksiController::class, 'edit']);
+    route::put('/{id}', [transaksiController::class, 'update']);
+    route::delete('/{id}', [transaksiController::class, 'delete']);
 });

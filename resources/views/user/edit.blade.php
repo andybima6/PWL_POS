@@ -24,7 +24,7 @@
                                 <option value="">- Pilih Level -</option>
                                 @foreach ($level as $item)
                                     <option value="{{ $item->level_id }}" @if ($item->level_id == $user->level_id) selected @endif>
-                                        {{ $item->level_nama }}</option>
+                                        {{ $item->level_code_nama }}</option>
                                 @endforeach
                             </select>
                             @error('level_id')

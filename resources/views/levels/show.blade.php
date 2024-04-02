@@ -6,7 +6,7 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            @empty($user)
+            @empty($level)
                 <div class="alert alert-danger alert-dismissible">
                     <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5>
                     Data yang Anda cari tidak ditemukan.
@@ -15,24 +15,19 @@
                 <table class="table table-bordered table-striped table-hover tablesm">
                     <tr>
                         <th>ID</th>
-                        <td>{{ $user->user_id }}</td>
-                    </tr>
-                   
-                    <tr>
-                        <th>Username</th>
-                        <td>{{ $user->username }}</td>
+                        <td>{{ $level->level_id }}</td>
                     </tr>
                     <tr>
-                        <th>Nama</th>
-                        <td>{{ $user->nama }}</td>
+                        <th>Level</th>
+                        <td>{{ $level->level_code }}</td>
                     </tr>
                     <tr>
-                        <th>Password</th>
-                        <td>********</td>
+                        <th>levelname</th>
+                        <td>{{ $level->level_code_nama }}</td>
                     </tr>
                 </table>
             @endempty
-            <a href="{{ url('user') }}" class="btn btn-sm btn-default mt2">Kembali</a>
+            <a href="{{ url('levels') }}" class="btn btn-sm btn-default mt2">Kembali</a>
         </div>
     </div>
 @endsection
