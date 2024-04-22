@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\userModel;
 use App\Models\stockModel;
 use App\Models\barangModel;
-use App\Models\userModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class stockController extends Controller
 {
-    public function index()
-    {
-        $breadcrumb = (object)[
-            'title' => 'Daftar stock',
-            'list' => ['Home', 'stock']
-        ];
+        public function index()
+        {
+            $breadcrumb = (object)[
+                'title' => 'Daftar stock',
+                'list' => ['Home', 'stock']
+            ];
 
         $page = (object)[
             'title' => 'Daftar stock yang terdaftar dalam sistem'
@@ -77,19 +78,20 @@ class stockController extends Controller
             'stok_jumlah' => 'required|integer|min:1',
         ]);
 
-        $stock = StockModel::where('barang_id', $request->barang_id)->latest()->first();
-
-        $total_stock = $stock ? $stock->stok_jumlah + $request->stok_jumlah : $request->stok_jumlah;
-
-        StockModel::create([
-            'barang_id' => $request->barang_id,
-            'user_id' => $request->user_id,
-            'stok_tanggal' => $request->stok_tanggal,
-            'stok_jumlah' => $total_stock,
-        ]);
+        StockModel::updateOrCreate(
+            ['barang_id' => $request->barang_id],
+            [
+                'user_id' => $request->user_id,
+                'stok_tanggal' => $request->stok_tanggal,
+                'stok_jumlah' => DB::raw("stok_jumlah + {$request->stok_jumlah}") // Menambahkan jumlah stok yang baru
+            ]
+        );
 
         return redirect('/stock')->with('success', 'Data barang berhasil disimpan');
     }
+
+
+
 
 
     // Add other methods like show, edit, update, and delete here...

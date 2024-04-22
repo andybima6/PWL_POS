@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\transaksiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\POSController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\kategorisController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ManagerController;
 use JeroenNoten\LaravelAdminLte\Http\Controllers\Controller;
 
 /*
@@ -151,4 +154,27 @@ Route::group(['prefix' => 'transaksi'], function () {
     route::get('/{id}/edit', [transaksiController::class, 'edit']);
     route::put('/{id}', [transaksiController::class, 'update']);
     route::delete('/{id}', [transaksiController::class, 'delete']);
+});
+
+
+Route::get('login',[AuthController::class,'index'])->name('login');
+Route::get('register',[AuthController::class,'register'])->name('register');
+
+Route::post('proses_login',[AuthController::class,'proses_login'])->name('proses_login');
+Route::get('logout',[AuthController::class,'logout'])->name('logout');
+Route::post('proses_register',[AuthController::class,'proses_register'])->name('proses_register');
+
+
+// Kita atur juga untuk middleware menggunakan group pada routing
+// Didalamnya terdapat group untuk mengecek kondisi login
+// jika user yang loogin merupakan admin maka akan diarahkan ke admincontroller
+// jika user yang loogin merupakan manager maka akan diarahkan ke usercontroller
+
+Route::group(['middleware'=>['auth']],function(){
+    Route::group(['middleware'=>['cek_login:1']],function(){
+        Route::resource('admin',AdminController::class);
+    });
+    Route::group(['middleware'=>['cek_login:2']],function(){
+        Route::resource('manager',ManagerController::class);
+});
 });
