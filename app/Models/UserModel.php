@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
+use App\Models\LevelModel;
+use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class UserModel extends Authenticatable
+class UserModel extends Authenticatable implements JWTSubject
 {
-   
-
     // Jobsheet 9 prak 1
-    public function getJMTIdentifier(){
+    public function getJWTIdentifier(){
         return $this ->getKey();
     }
-    public function getJMTCustomClaims(){
+    public function getJWTCustomClaims(){
         return [];
     }
     protected $table = 'm_users';        // Mendefinisikan nama tabel yang digunakan untuk model ini

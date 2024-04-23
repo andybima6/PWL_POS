@@ -17,7 +17,7 @@ class RegisterController extends Controller
             'password' => 'required|min:5|confirmed',
             'level_id' => 'required'
         ]);
-
+        
         //if validations fails
         if($validator->fails()) {
             return response()->json($validator->errors(), 422);
