@@ -77,41 +77,41 @@ class AuthController extends Controller
 
     // aksi form register
     public function proses_register(Request $request)
-    {
-        // kita buat validasi untuk proses register
-        // validasinya yaitu semua field wajid diisi
-        // validasi username harus unique atau tidak boleh ada duplicate username
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-            'username' => 'required|unique:m_users',
-            'password' => 'required',
-            'level_code_nama' => 'required',
-        ]);
+{
+    // kita buat validasi untuk proses register
+    // validasinya yaitu semua field wajid diisi
+    // validasi username harus unique atau tidak boleh ada duplicate username
+    $validator = Validator::make($request->all(), [
+        'nama' => 'required',
+        'username' => 'required|unique:m_users',
+        'password' => 'required',
+        'level_code_nama' => 'required',
+    ]);
 
-        // kalau gagal kembali ke halaman registrasi dengan menampilkan pesan error
-        if ($validator->fails()) {
-            return redirect('/register')
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        // ambil level_id dari level_code_nama yang dipilih
-        $level_id = $request->input('level_code_nama');
-
-        // hash password
-        $password = Hash::make($request->password);
-
-        // masukkan semua data pada request ke table user
-        UserModel::create([
-            'nama' => $request->input('nama'),
-            'username' => $request->input('username'),
-            'password' => $password,
-            'level_id' => $level_id,
-        ]);
-
-        // kalau berhasil arahkan ke halaman login
-        return redirect()->route('login');
+    // kalau gagal kembali ke halaman registrasi dengan menampilkan pesan error
+    if ($validator->fails()) {
+        return redirect('/register')
+            ->withErrors($validator)
+            ->withInput();
     }
+
+    // ambil level_id dari level_code_nama yang dipilih
+    $level_id = $request->input('level_code_nama');
+
+    // hash password
+    $password = Hash::make($request->password);
+
+    // masukkan semua data pada request ke table user
+    UserModel::create([
+        'nama' => $request->input('nama'),
+        'username' => $request->input('username'),
+        'password' => $password,
+        'level_id' => $level_id,
+    ]);
+
+    // kalau berhasil arahkan ke halaman login
+    return redirect()->route('login');
+}
 
     public function logout(Request $request)
     {

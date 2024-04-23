@@ -9,8 +9,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserModel extends Authenticatable
 {
-    use HasFactory;
+   
 
+    // Jobsheet 9 prak 1
+    public function getJMTIdentifier(){
+        return $this ->getKey();
+    }
+    public function getJMTCustomClaims(){
+        return [];
+    }
     protected $table = 'm_users';        // Mendefinisikan nama tabel yang digunakan untuk model ini
     protected $primaryKey = 'user_id';  // Mendefinisikan primary key dari tabel yang digunakan
 
