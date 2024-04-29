@@ -1,19 +1,21 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\transaksiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\POSController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\LevelController;
+use App\Http\Controllers\AdminController;
+// use App\Http\Controllers\LevelController;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\barangController;
 use App\Http\Controllers\LevelsController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\kategorisController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\transaksiController;
+use App\Http\Controllers\Api\LogoutController;
+use App\Http\Controllers\Api\LevelController;
 use JeroenNoten\LaravelAdminLte\Http\Controllers\Controller;
 
 /*
@@ -178,5 +180,4 @@ Route::group(['middleware'=>['auth']],function(){
         Route::resource('manager',ManagerController::class);
 });
 });
-
 
