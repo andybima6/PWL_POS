@@ -12,17 +12,17 @@ class BarangController extends Controller
     }
 
     public function store(Request $request) {
-        $level = barangModel::create($request->all());
-        return response()->json($level, 201);
+        $barang = barangModel::create($request->all());
+        return response()->json($barang, 201);
     }
 
-    public function show(barangModel $level) {
-        return barangModel::find($level);
+    public function show(barangModel $barang) {
+        return barangModel::find($barang);
     }
 
-    public function update(Request $request, barangModel $level) {
-        $level->update($request->all());
-        return barangModel::find($level);
+    public function update(Request $request, barangModel $barang) {
+        $barang->update($request->all());
+        return barangModel::find($barang);
     }
 
     public function destroy(barangModel $user) {

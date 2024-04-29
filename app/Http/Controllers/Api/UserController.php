@@ -12,17 +12,17 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
-        $level = UserModel::create($request->all());
-        return response()->json($level, 201);
+        $user = UserModel::create($request->all());
+        return response()->json($user, 201);
     }
 
-    public function show(UserModel $level) {
-        return UserModel::find($level);
+    public function show(UserModel $user) {
+        return UserModel::find($user);
     }
 
-    public function update(Request $request, UserModel $level) {
-        $level->update($request->all());
-        return UserModel::find($level);
+    public function update(Request $request, UserModel $user) {
+        $user->update($request->all());
+        return UserModel::find($user);
     }
 
     public function destroy(UserModel $user) {
