@@ -21,13 +21,13 @@ class UserModel extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    protected $table = 'm_users';        // Mendefinisikan nama tabel yang digunakan untuk model ini
-    protected $primaryKey = 'user_id';  // Mendefinisikan primary key dari tabel yang digunakan
+    protected $table = 'm_barangs';        // Mendefinisikan nama tabel yang digunakan untuk model ini
+    protected $primaryKey = 'barang_id';  // Mendefinisikan primary key dari tabel yang digunakan
 
-    protected $fillable = ['user_id', 'level_id', 'username', 'nama', 'password','image'];
+    protected $fillable = ['barang_id', 'kategori_id', 'barang_kode', 'barang_nama', 'harga_beli','harga_jual','image'];
     // protected $fillable = ['level_id', 'username', 'nama'];
 
-    public function level(): BelongsTo
+    public function kategori(): BelongsTo
     {
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
