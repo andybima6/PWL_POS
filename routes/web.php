@@ -16,6 +16,7 @@ use App\Http\Controllers\kategorisController;
 use App\Http\Controllers\transaksiController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\LevelController;
+use App\Http\Controllers\FileUploadController;
 use JeroenNoten\LaravelAdminLte\Http\Controllers\Controller;
 
 /*
@@ -166,6 +167,8 @@ Route::post('proses_login',[AuthController::class,'proses_login'])->name('proses
 Route::get('logout',[AuthController::class,'logout'])->name('logout');
 Route::post('proses_register',[AuthController::class,'proses_register'])->name('proses_register');
 
+Route::get('/file-upload',[FileUploadController::class,'fileUpload']);
+Route::post('/file-upload',[FileUploadController::class,'prosesFileUpload']);
 
 // Kita atur juga untuk middleware menggunakan group pada routing
 // Didalamnya terdapat group untuk mengecek kondisi login
@@ -179,5 +182,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::group(['middleware'=>['cek_login:2']],function(){
         Route::resource('manager',ManagerController::class);
 });
+
+
 });
 
