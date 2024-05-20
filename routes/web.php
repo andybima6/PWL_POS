@@ -168,7 +168,7 @@ Route::get('logout',[AuthController::class,'logout'])->name('logout');
 Route::post('proses_register',[AuthController::class,'proses_register'])->name('proses_register');
 
 Route::get('/file-upload',[FileUploadController::class,'fileUpload']);
-Route::post('/file-upload',[FileUploadController::class,'prosesFileUpload']);
+Route::post('/file-upload-rename', [FileUploadController::class, 'prosesFileUpload']);
 
 // Kita atur juga untuk middleware menggunakan group pada routing
 // Didalamnya terdapat group untuk mengecek kondisi login

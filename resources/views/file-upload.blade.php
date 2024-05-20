@@ -29,10 +29,13 @@
         <h2>File upload</h2>
         <hr>
 
-        <form action="{{ url('/file-upload') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/file-upload-rename') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
+                <label for="nama" class = "form-label">Nama Gambar</label>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Inputkan Nama">
+
                 <label for="berkas" class = "form-label">Gambar Profile</label>
                 <input type="file" class="form-control" id="berkas" name="berkas">
 
