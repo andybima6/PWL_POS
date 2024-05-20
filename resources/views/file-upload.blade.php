@@ -37,7 +37,7 @@
                 <input type="file" class="form-control" id="berkas" name="berkas">
 
                 @error('berkas')
-                    <div class="text-danger">{{ $message }}</div>s
+                    <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
